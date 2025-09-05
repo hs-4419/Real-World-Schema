@@ -1,11 +1,14 @@
 # Real-World-Schema
 ## 1) Stats for measurements table (Insertion + Migration)
-__Stats for table with 1M records__
+__Stats for table with 1M records__ <br/>
 ![stats for measurements table with 1M rows](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/stats%20for%20measurements_1M.png)
-__Stats for table with 10M records__
+
+__Stats for table with 10M records__ <br/>
 ![stats for measurements table with 10M rows](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/stats%20for%20measurements_10M.png)
-__Stats for table with 100M records__
+
+__Stats for table with 100M records__ <br/>
 ![stats for measurements table with 100M rows](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/stats%20for%20measurements_100M.png)
+
 ## 2) Backing up and restoring DB before and after migration
 ![Backing up and restoring DB before and after migration](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/Backup%20and%20restore%20measurements.png)
 ## 3) Using expand-contract pattern to deprecate feet column
