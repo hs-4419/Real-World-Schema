@@ -150,7 +150,7 @@ __Migrated to v1.2 ✅__
 ## 9) Implemeting reactions v2 (In use)
 > [!Note]
 > As of Sept 2025 the reations being used are Like, Celebrate, Support, Love, Insightful, Funny
-![Reactions for v2](https://media.licdn.com/dms/image/v2/D4D08AQGvH8viJRDLuA/croft-frontend-shrinkToFit1920/croft-frontend-shrinkToFit1920/0/1669619914332?e=1757656800&v=beta&t=c1JFjTInyWo8CwlETNmYt4tNUtTDHh1Zzgy76DhWzU4)
+![Reactions for v2](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/Linkedin%20Reactions%20v2.png)
 
 1) In this part there is just change in order of the enum values, so no need of backing up database/ tables
 2) create a new enum type
@@ -178,4 +178,53 @@ __Migrated to v1.2 ✅__
 __Migrating and migrated to v2 ✅__
 ![v2 migration ✅](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/reactions%20table%20details%20v2%20%5BQ9%5D.png)
 # Observations
-1) Why did I use enums? By using the data type for reactions as int, implementing v1.2 and v2 would have been so much simpler. If required to see the reaction name in sql, I could have created a table named reaction_types(id, type, priority). By adding priority I could have easily handled the updated versions with very less change and would have defeated the enum's in-built type where we can't drop it's value. What do you think?? 
+1) Why did I use enums? By using the data type for reactions as int, implementing v1.2 and v2 would have been so much simpler. If required to see the reaction name in sql, I could have created a table named reaction_types(id, type, priority). By adding priority I could have easily handled the updated versions with very less change and would have defeated the enum's in-built type where we can't drop it's value. What do you think??
+# Real World Queries - Using stack overflow DB
+## 1) Stack Overflow - #tables
+__Query__
+```
+select count(*) as 'No. of tables' from sys.tables;
+```
+__Output__
+![No. of tables](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/No.%20of%20tables%20query%20stats.png)
+## 2) #rows in users table
+__Query__
+```
+select count(*) as 'No. of users' from users;
+```
+__Output__
+![No. of rows in users table](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/User%20table%20stats.png)
+## 3) #rows in posts table
+__Query__
+```
+select count(*) as 'No. of posts' from posts;
+```
+__Output__
+![No. of rows in posts table](https://github.com/hs-4419/Real-World-Schema/blob/main/Images/Posts%20table%20stats.png)
+## 4) Practicing LC
+[LC Profile](https://leetcode.com/u/hs_4419/)
+## 5) Understanding [Query](https://data.stackexchange.com/stackoverflow/query/219990/get-size-of-database-tables)
+1. Storage Space - 520 GB
+2. Demystifying the query
+   + We are using five system views here
+        + sys.tables
+             - stores basic table realted info 
+        + sys.indexes
+             + stores all the index details
+             + is joined with table view via object_id which is PK for sys.tables
+             + join gives us all the indexes of a table
+        + sys.partitions
+             + stores the pages related info, for eg. this index is stored in these pages and for each page these are the no. of rows
+             + thus it helps in calculating no. of rows
+        + sys.allocation_units
+             + it stores the actual size of a partition/page being stored in physical disk
+        + sys.schemas
+             + this view is being used to group tables by schemas
+             + helps in distinguishing tables with same name, belonging to different schemas
+   + This complete query is being used in a temporary table named tmp
+   + For each table, we get it's index, using the index we find it's page details which in turn help in finding the actual physical storage space being used using sys.partitions, later we group this data based on schema
+## 6) Practicing more LC - SQL50
+Ques solved so far... 37/50  
+Easy - 31/32  
+Medium - 6/17  
+Harad - 0/1
