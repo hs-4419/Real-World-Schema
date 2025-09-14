@@ -221,8 +221,9 @@ __Output__
         + sys.schemas
              + this view is being used to group tables by schemas
              + helps in distinguishing tables with same name, belonging to different schemas
-   + This complete query is being used in a temporary table named tmp
+   + This output of the query is stored in a temporary table named tmp
    + For each table, we get it's index, using the index we find it's page details which in turn help in finding the actual physical storage space being used using sys.partitions, later we group this data based on schema
+   + Even if a table's column(s) aren't indexed, still we would have to follow the same approach because sys.indexes view stores what type of indexing is there, if none is there then it's dumped in heap
 ## 6) Practicing more LC - SQL50
 Ques solved so far... 37/50  
 Easy - 31/32  
